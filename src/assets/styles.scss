@@ -1,0 +1,11 @@
+.nav-NavLink {
+  text-decoration: none;
+  color: rgb(168, 0, 0);
+  &.active {
+    color: green !important;
+    font-weight: bold;
+  }
+}
+.nav-item {
+  margin-left: 10px;
+}
