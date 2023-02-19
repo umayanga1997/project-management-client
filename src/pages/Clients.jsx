@@ -4,6 +4,8 @@ import { GET_CLIENTS } from '../queries/Client';
 import Loading from '../components/Loading';
 import Error from '../components/Error';
 import ClientCard from '../components/ClientCard';
+import FormModel from '../components/FormModel';
+import ClientForm from '../components/forms/ClientForm';
 
 export default function Clients() {
 
@@ -19,11 +21,14 @@ export default function Clients() {
                 (
 
                     <>
-                        <button type="button" class="btn btn-outline-success">Add New</button>
+                        <button type="button" className="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#addClientModel">Add New</button>
+                        <FormModel title={"Add New Client"} modelId={"addClientModel"}>
+                            <ClientForm />
+                        </FormModel>
                         <div className='row row-cols-4 row-cols-sm-1 row-cols-md-4 row-cols-lg-4'>
                             {
-                                data.getClients?.map((element) => (
-                                    <ClientCard key={element.id} data={element} editBtn={true} />
+                                data.getClients?.map((element, index) => (
+                                    <ClientCard key={element.id} index={index} data={element} editBtn={true} />
                                 ))
                             }
                         </div>

@@ -4,6 +4,8 @@ import Loading from '../components/Loading';
 import Error from '../components/Error';
 import ProjectCard from '../components/ProjectCard';
 import { GET_PROJECTS } from '../queries/Project';
+import ProjectForm from '../components/forms/ProjectForm';
+import FormModel from '../components/FormModel';
 
 export default function Projects() {
 
@@ -18,11 +20,14 @@ export default function Projects() {
                 !loading && !error &&
                 (
                     <>
-                        <button type="button" class="btn btn-outline-success">Add New</button>
+                        <button type="button" className="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#addProjectModel">Add New</button>
+                        <FormModel title={"Add New Project"} modelId={"addProjectModel"}>
+                            <ProjectForm />
+                        </FormModel>
                         <div className='row row-cols-4 row-cols-sm-1 row-cols-md-4 row-cols-lg-4'>
                             {
-                                data.getProjects?.map((element) => (
-                                    <ProjectCard key={element.id} data={element} editBtn={true} />
+                                data.getProjects?.map((element, index) => (
+                                    <ProjectCard key={index} index={index} data={element} editBtn={true} />
                                 ))
                             }
                         </div>
