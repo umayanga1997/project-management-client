@@ -1,18 +1,15 @@
 import { gql } from "@apollo/client";
 
 const CREATE_CLIENT = gql`
-    mutation createClient($name: String!, $company: String!, $mobileNo: String!){
-        createClient(name: $name,
-            company: $company,
-            mobileNo: $mobileNo
-          
-            ) {        
-            name
-            company
-            mobileNo
-        }
+  mutation createClient($name: String!, $company: String!, $mobileNo: String!) {
+    createClient(name: $name, company: $company, mobileNo: $mobileNo) {
+      id
+      name
+      company
+      mobileNo
     }
-`
+  }
+`;
 const UPDATE_CLIENT = gql`
     mutation updateClient($id: ID!, $name: String!, $company: String!, $mobileNo: String!){
         updateClient(
